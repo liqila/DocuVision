@@ -1,0 +1,18 @@
+python-dotenv
+PyMuPDF
+langchain>=0.1.0
+pydantic>=2.0.0
+pillow>=10.0.0  # 添加 PIL 支持
+langchain-openai>=0.0.2
+openai>=1.0.0  # 添加回来，因为 image_extractor 需要
+fastapi>=0.68.0
+uvicorn>=0.15.0
+python-multipart>=0.0.5
+aiofiles>=0.7.0
+python-docx>=0.8.11  # Word文档处理
+python-pptx>=0.6.21  # PPT文档处理
+pandas>=1.5.0  # Excel和数据处理
+openpyxl>=3.1.0  # Excel文件支持
+pyyaml>=6.0  # YAML文件支持
+python-magic>=0.4.27  # 文件类型检测
+chardet>=4.0.0  # 文件编码检测 
