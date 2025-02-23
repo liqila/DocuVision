@@ -89,14 +89,13 @@ A Python-based multimodal document parsing service that supports intelligent par
 ```
 doc-parser/
 ├── api/                # API implementation
-│   └── app.py         # FastAPI application
+│   └── app.py         # FastAPI application with cloud function handlers
 ├── config/            # Configuration files
 │   ├── settings.py    # Global settings
 │   └── logging_config.py  # Logging configuration
 ├── loaders/           # Document loaders
 │   ├── base.py       # Base loader
 │   ├── pdf_loader.py # PDF loader
-│   ├── word_loader.py # Word loader
 │   └── ...           # Other loaders
 ├── processors/        # Processors
 │   ├── base.py       # Base processor
@@ -118,7 +117,10 @@ Configure the following parameters in `.env`:
 OPENAI_API_KEY=your-api-key-here
 
 # Environment Configuration
-ENV=development  # development, production, lambda
+ENV=development  # development, lambda, gcp, azure
+
+# Cloud Provider Configuration
+CLOUD_PROVIDER=local  # local, aws, gcp, azure
 
 # Model Configuration
 VISION_MODEL=gpt-4o-mini
@@ -127,6 +129,54 @@ VISION_MODEL=gpt-4o-mini
 API_HOST=0.0.0.0
 API_PORT=8000
 ```
+
+## 🚀 Deployment
+
+### Local Development
+```bash
+python run.py
+```
+
+### AWS Lambda
+```bash
+# Install Serverless Framework
+npm install -g serverless
+
+# Deploy
+serverless deploy
+```
+
+### Google Cloud Functions
+```bash
+# Deploy to GCP
+gcloud functions deploy docuvision \
+    --runtime python39 \
+    --trigger-http \
+    --entry-point create_gcp_handler
+```
+
+### Azure Functions
+```bash
+# Deploy to Azure
+func azure functionapp publish YourFunctionAppName
+```
+
+## 🌩️ Cloud Environment Support
+
+### AWS Lambda
+- Uses Mangum adapter for AWS Lambda integration
+- Automatic CloudWatch logging integration
+- `/tmp` directory for temporary file storage
+
+### Google Cloud Functions
+- Native Functions Framework integration
+- Cloud Logging support
+- Temporary storage in function runtime
+
+### Azure Functions
+- Azure Functions HTTP trigger support
+- Application Insights logging integration
+- Local temp storage handling
 
 ## 📝 API Usage
 
@@ -207,6 +257,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Basic API implementation
 - Complete document loader suite
 - Async processing and multi-file upload support
+- Cloud function deployment support (AWS, GCP, Azure)
 
 ## 📞 Contact
 
@@ -227,3 +278,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [OpenAI API Documentation](https://platform.openai.com/docs)
 - [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
+- [AWS Lambda Python Runtime](https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html)
+- [Google Cloud Functions Python Runtime](https://cloud.google.com/functions/docs/concepts/python-runtime)
+- [Azure Functions Python Developer Guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)

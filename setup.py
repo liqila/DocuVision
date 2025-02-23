@@ -21,6 +21,9 @@ setup(
         "langchain>=0.1.0",
         "langchain-openai>=0.0.2",
         "openai>=1.0.0",
+        "mangum>=0.17.0",
+        "functions-framework>=3.0.0",
+        "azure-functions>=1.11.0",
     ],
     extras_require={
         'dev': [

@@ -9,11 +9,17 @@ load_dotenv()
 PROJECT_ROOT = Path(__file__).parent.parent
 
 # 环境配置
-ENV = os.getenv('ENV', 'development')
+ENV = os.getenv('ENV', 'development')  # development, lambda, gcp, azure
+
+# 临时文件目录
+TEMP_DIR = "/tmp" if ENV in ["lambda", "gcp", "azure"] else None
 
 # API配置
 API_HOST = os.getenv('API_HOST', '0.0.0.0')
 API_PORT = int(os.getenv('API_PORT', '8000'))
+
+# Cloud Provider 配置
+CLOUD_PROVIDER = os.getenv('CLOUD_PROVIDER', 'local')  # local, aws, gcp, azure
 
 # OpenAI API配置
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
