@@ -55,8 +55,8 @@ A Python-based multimodal document parsing service that supports intelligent par
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
-   cd doc-parser
+   git clone https://github.com/liqila/DocuVision.git
+   cd DocuVision
    ```
 
 2. **Install Dependencies**:
@@ -200,7 +200,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔄 Changelog
 
-### v0.1.0 (2024-02-22)
+### v0.1.0 (2025-02-23)
 - Initial release
 - Multi-format document support
 - OpenAI Vision API integration
@@ -210,9 +210,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- Project Link: [GitHub Repository](https://github.com/yourusername/doc-parser)
-- Issue Tracker: Submit via GitHub Issues
-- Contributing: Pull requests are welcome
+- Author: Frank Li <liqila@gmail.com>
+- Project Link: [GitHub Repository](https://github.com/liqila/DocuVision)
+- Issue Tracker: [Submit via GitHub Issues](https://github.com/liqila/DocuVision/issues)
+- Contributing: [Pull requests](https://github.com/liqila/DocuVision/pulls) are welcome
 
 ## 🙏 Acknowledgments
 

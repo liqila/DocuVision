@@ -33,9 +33,9 @@ setup(
     },
     python_requires='>=3.9',
     description='A document parsing service supporting multiple formats',
-    author='Your Name',
-    author_email='your.email@example.com',
-    url='https://github.com/yourusername/doc_parser',
+    author='Frank Li',
+    author_email='liqila@gmail.com',
+    url='https://github.com/liqila/DocuVision',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
