@@ -1,31 +1,31 @@
-# 多模态文档解析服务 (Multimodal Document Parser)
+# Multimodal Document Parser
 
-一个基于Python的多模态文档解析服务，支持多种文档格式的智能解析，包括文本提取、图像分析和结构化数据处理。本项目使用OpenAI Vision API进行图像分析，支持多语言处理。
+A Python-based multimodal document parsing service that supports intelligent parsing of various document formats, including text extraction, image analysis, and structured data processing. This project uses OpenAI Vision API for image analysis and supports multilingual processing.
 
-## 🌟 主要特性
+## 🌟 Key Features
 
-- **多格式支持**：
-  - PDF文档
-  - Word文档 (.doc, .docx)
-  - Excel表格 (.xls, .xlsx)
-  - PowerPoint演示文稿 (.ppt, .pptx)
-  - 图片文件 (.png, .jpg, .jpeg, .gif, .bmp, .webp)
-  - 文本文件 (.txt, .log, .csv, .json, .yaml, .xml, .md)
+- **Multi-format Support**:
+  - PDF Documents
+  - Word Documents (.doc, .docx)
+  - Excel Spreadsheets (.xls, .xlsx)
+  - PowerPoint Presentations (.ppt, .pptx)
+  - Images (.png, .jpg, .jpeg, .gif, .bmp, .webp)
+  - Text Files (.txt, .log, .csv, .json, .yaml, .xml, .md)
 
-- **智能处理**：
-  - 文本提取和OCR
-  - 图像内容分析
-  - 表格数据结构化
-  - 多语言自动识别
+- **Intelligent Processing**:
+  - Text Extraction and OCR
+  - Image Content Analysis
+  - Table Data Structuring
+  - Multilingual Recognition
 
-- **高性能设计**：
-  - 异步处理
-  - 模块化架构
-  - 可扩展API
+- **High-Performance Design**:
+  - Asynchronous Processing
+  - Modular Architecture
+  - Extensible API
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
-- **核心依赖**：
+- **Core Dependencies**:
   ```
   python-dotenv>=0.19.0
   PyMuPDF>=1.19.0
@@ -36,14 +36,14 @@
   openai>=1.0.0
   ```
 
-- **Web框架**：
+- **Web Framework**:
   ```
   fastapi>=0.68.0
   uvicorn>=0.15.0
   python-multipart>=0.0.5
   ```
 
-- **文档处理**：
+- **Document Processing**:
   ```
   python-docx>=0.8.11
   python-pptx>=0.6.21
@@ -51,108 +51,108 @@
   openpyxl>=3.1.0
   ```
 
-## 📦 快速开始
+## 📦 Quick Start
 
-1. **克隆项目**：
+1. **Clone the Repository**:
    ```bash
    git clone <repository-url>
    cd doc-parser
    ```
 
-2. **安装依赖**：
+2. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **配置环境变量**：
+3. **Configure Environment**:
    ```bash
    cp .env.example .env
-   # 编辑.env文件，设置必要的配置项：
+   # Edit .env file with required settings:
    # OPENAI_API_KEY=your-api-key
    # ENV=development
    # API_HOST=0.0.0.0
    # API_PORT=8000
    ```
 
-4. **启动服务**：
+4. **Start the Service**:
    ```bash
    python run.py
    ```
 
-5. **测试API**：
+5. **Test the API**:
    ```bash
    python tests/test_api.py
    ```
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 doc-parser/
-├── api/                # API实现
-│   └── app.py         # FastAPI应用
-├── config/            # 配置文件
-│   ├── settings.py    # 全局设置
-│   └── logging_config.py  # 日志配置
-├── loaders/           # 文档加载器
-│   ├── base.py       # 基础加载器
-│   ├── pdf_loader.py # PDF加载器
-│   ├── word_loader.py # Word加载器
-│   └── ...           # 其他文档加载器
-├── processors/        # 处理器
-│   ├── base.py       # 基础处理器
-│   └── image_extractor.py  # 图像提取器
-├── services/         # 业务服务
-│   └── document_service.py # 文档服务
-├── tests/            # 测试文件
-├── .env.example      # 环境变量示例
-├── requirements.txt   # 项目依赖
-└── setup.py          # 安装配置
+├── api/                # API implementation
+│   └── app.py         # FastAPI application
+├── config/            # Configuration files
+│   ├── settings.py    # Global settings
+│   └── logging_config.py  # Logging configuration
+├── loaders/           # Document loaders
+│   ├── base.py       # Base loader
+│   ├── pdf_loader.py # PDF loader
+│   ├── word_loader.py # Word loader
+│   └── ...           # Other loaders
+├── processors/        # Processors
+│   ├── base.py       # Base processor
+│   └── image_extractor.py  # Image extractor
+├── services/         # Business services
+│   └── document_service.py # Document service
+├── tests/            # Test files
+├── .env.example      # Environment variables example
+├── requirements.txt   # Project dependencies
+└── setup.py          # Installation configuration
 ```
 
-## 🔧 配置说明
+## 🔧 Configuration
 
-在`.env`文件中配置以下参数：
+Configure the following parameters in `.env`:
 
 ```
-# OpenAI配置
+# OpenAI Configuration
 OPENAI_API_KEY=your-api-key-here
 
-# 环境配置
+# Environment Configuration
 ENV=development  # development, production, lambda
 
-# 模型配置
+# Model Configuration
 VISION_MODEL=gpt-4o-mini
 
-# 服务配置
+# Service Configuration
 API_HOST=0.0.0.0
 API_PORT=8000
 ```
 
-## 📝 API使用
+## 📝 API Usage
 
-### 文档处理接口
+### Document Processing Endpoint
 
 ```
-# 处理单个或多个文档
+# Process single or multiple documents
 POST /process
 Content-Type: multipart/form-data
 
-# 请求参数
-files: List[UploadFile]  # 支持多文件上传
+# Request Parameters
+files: List[UploadFile]  # Supports multiple file uploads
 
-# 响应示例
+# Response Example
 {
     "file_name.pdf": [
         {
-            "content": "提取的文本内容...",
+            "content": "Extracted text content...",
             "metadata": {
-                "source": "文件路径",
+                "source": "file_path",
                 "page": 1,
                 "total_pages": 10,
                 "images": [
                     {
                         "bbox": [x1, y1, x2, y2],
-                        "content": "图像分析结果",
+                        "content": "Image analysis result",
                         "extraction_status": "success"
                     }
                 ]
@@ -162,67 +162,67 @@ files: List[UploadFile]  # 支持多文件上传
 }
 ```
 
-### 健康检查接口
+### Health Check Endpoint
 
 ```
 GET /health
-响应: {"status": "healthy"}
+Response: {"status": "healthy"}
 ```
 
-## 🔍 特性详解
+## 🔍 Feature Details
 
-### 图像分析能力
+### Image Analysis Capabilities
 
-- 使用OpenAI Vision API进行图像内容分析
-- 支持多语言图像文字识别
-- 智能提取图表信息
-- 上下文感知的图像描述
+- OpenAI Vision API integration for image content analysis
+- Multilingual text recognition in images
+- Intelligent chart and graph extraction
+- Context-aware image description
 
-### 文档处理能力
+### Document Processing Capabilities
 
-- PDF文档的分页处理和图像提取
-- Word文档的格式保持和图表识别
-- Excel表格的结构化数据提取
-- PowerPoint的幻灯片内容分析
-- 文本文件的智能格式识别
+- PDF page processing and image extraction
+- Word document format preservation and table recognition
+- Excel structured data extraction
+- PowerPoint slide content analysis
+- Intelligent text file format recognition
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-1. Fork 项目
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启Pull Request
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-## 🔄 更新日志
+## 🔄 Changelog
 
 ### v0.1.0 (2024-02-22)
-- 初始版本发布
-- 支持多种文档格式处理
-- 集成OpenAI Vision API
-- 实现基础API功能
-- 添加完整的文档加载器
-- 支持异步处理和多文件上传
+- Initial release
+- Multi-format document support
+- OpenAI Vision API integration
+- Basic API implementation
+- Complete document loader suite
+- Async processing and multi-file upload support
 
-## 📞 联系方式
+## 📞 Contact
 
-- 项目地址：[GitHub Repository](https://github.com/yourusername/doc-parser)
-- 问题反馈：请在GitHub Issues中提交
-- 贡献代码：欢迎提交Pull Request
+- Project Link: [GitHub Repository](https://github.com/yourusername/doc-parser)
+- Issue Tracker: Submit via GitHub Issues
+- Contributing: Pull requests are welcome
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- OpenAI - 提供Vision API支持
-- FastAPI - 优秀的Web框架
-- LangChain - 强大的LLM应用框架
-- 所有贡献者和用户
+- OpenAI - For Vision API support
+- FastAPI - Excellent web framework
+- LangChain - Powerful LLM application framework
+- All contributors and users
 
-## 📚 相关资源
+## 📚 Resources
 
-- [FastAPI文档](https://fastapi.tiangolo.com/)
-- [OpenAI API文档](https://platform.openai.com/docs)
-- [LangChain文档](https://python.langchain.com/docs/get_started/introduction)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [OpenAI API Documentation](https://platform.openai.com/docs)
+- [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
